@@ -1609,12 +1609,16 @@
         '<(V8_ROOT)/src/libplatform/worker-thread.cc',
         '<(V8_ROOT)/src/libplatform/worker-thread.h',
       ],
+      'direct_dependent_settings': {
+        'defines': ['USING_V8_PLATFORM_SHARED'],
+      },
+      'defines': ['BUILDING_V8_PLATFORM_SHARED'],
       'conditions': [
         ['component=="shared_library"', {
-          'direct_dependent_settings': {
-            'defines': ['USING_V8_PLATFORM_SHARED'],
-          },
-          'defines': ['BUILDING_V8_PLATFORM_SHARED'],
+          # 'direct_dependent_settings': {
+          #   'defines': ['USING_V8_PLATFORM_SHARED'],
+          # },
+          # 'defines': ['BUILDING_V8_PLATFORM_SHARED'],
         }],
         ['v8_use_perfetto==1', {
           'sources!': [
